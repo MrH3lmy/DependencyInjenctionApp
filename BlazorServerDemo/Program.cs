@@ -10,6 +10,8 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddTransient<IDemo,Demo>(); // Creates a new instance everytime we call it 
 // when you asked for interface idemo you are going to give them demo 
+builder.Services.AddTransient<IDemo, UTCDemo>(); // Creates a new instance everytime we call it 
+
 builder.Services.AddTransient<ProcessDemo>();
 
 
