@@ -1,14 +1,13 @@
 ﻿using Microsoft.VisualBasic;
 
-namespace BlazorServerDemo.Data
-{
-    public class Demo : IDemo
-    {
-        public DateTime StartupTime { get; init; }
+namespace BlazorServerDemo.Data;
 
-        public Demo()
-        {
-            StartupTime = DateTime.Now;
-        }
+public class Demo : IDemo , ILocalDemo
+{
+    public DateTime StartupTime { get; init; }
+
+    public Demo()
+    {
+        StartupTime = DateTime.Now;
     }
 }
