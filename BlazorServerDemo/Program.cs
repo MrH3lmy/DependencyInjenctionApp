@@ -1,3 +1,4 @@
+using BlazorServerDemo;
 using BlazorServerDemo.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -8,13 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddTransient<IDemo,Demo>(); // Creates a new instance everytime we call it 
-// when you asked for interface idemo you are going to give them demo 
-builder.Services.AddTransient<IDemo, UTCDemo>(); // Creates a new instance everytime we call it 
-
-builder.Services.AddTransient<ProcessDemo>();
-
-
+builder.Services.AddDemoInfo();// All Services Registered in One Plance .
+builder.Services.AddSingleton(new DemoWithData(5)); // Works only with Singleton
+builder.Services.AddTransient<IDemo>(i => new Demo());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
